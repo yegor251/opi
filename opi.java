@@ -1,9 +1,12 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Random;
 import java.util.Scanner;
 
 public class opi {
+
+    static final Set<Character> LETTERS = Set.of('А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я');
     static Scanner scanner = new Scanner(System.in);
     public static String ReadFile(String path, int randomNum) throws FileNotFoundException {
         Scanner fileReader = new Scanner(new File(path));
@@ -87,7 +90,7 @@ public class opi {
                 num = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
                 isIncorrect = true;
-                System.out.print("Ошибка ввода. Введите еще раз: ");
+                System.out.print("Номер буквы - это число! Введите еще раз: ");
             }
             if (!isIncorrect && ((num < 1) || (num > fullWord.length()))) {
                 isIncorrect = true;
@@ -116,8 +119,8 @@ public class opi {
         do {
             isInCorrect=false;
             str = scanner.nextLine();
-            if (str.length()!=1){
-                System.out.println("Нужно вводить букву! Попробуйте снова!");
+            if ((str.length()!=1) || !(LETTERS.contains(str.toUpperCase()))) {
+                System.out.println("Нужно вводить одну русскую букву! Попробуйте снова!");
                 isInCorrect=true;
             }
         } while (isInCorrect);
