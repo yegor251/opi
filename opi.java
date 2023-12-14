@@ -119,8 +119,12 @@ public class opi {
         do {
             isInCorrect=false;
             str = scanner.nextLine();
-            if ((str.length()!=1) || !(LETTERS.contains(str.toUpperCase()))) {
-                System.out.println("Нужно вводить одну русскую букву! Попробуйте снова!");
+            if (str.length()!=1) {
+                System.out.println("Нужно вводить букву! Попробуйте снова!");
+                isInCorrect=true;
+            }
+            if (!(LETTERS.contains(str.toUpperCase().charAt(0))) && !(isInCorrect)) {
+                System.out.println("Это не русская буква! Попробуйте снова!");
                 isInCorrect=true;
             }
         } while (isInCorrect);
