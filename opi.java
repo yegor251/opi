@@ -147,8 +147,9 @@ public class opi {
         int round=1; //это переменная отмечает за игрока который сейчас называет букву
         int randNum;
         while (CountLetter(currWord,'_')>0){ //цикл продолжается пока есть неоткрытые буквы
-            round=1;
-            while (round<4 && CountLetter(currWord,'_')>0){
+            round=0;
+            do{
+                round++;
                 System.out.println(uslovie+' '+currWord);
                 System.out.println("Баланс игроков:");
                 for (int i = 0; i < 3; i++) {
@@ -163,13 +164,11 @@ public class opi {
                 randNum=findRandom(); //генерация рандомного числа от 5 до 17
                 if (randNum==16){ // сгенерировало 16 - переход хода
                     System.out.println("переход хода");
-                    round++; // слеоующий игрок
                     continue; // эта штука скипает всё что идёт ниже и возращает к циклу на 144 строке
                 }
                 if (randNum==17){ //аналогично только тут вызывается функция сектор +
                     System.out.println("Сектор плюс");
                     currWord = sectorPlus(currWord,fullWord);
-                    round++;
                     continue;
                 }
                 tempScore=randNum*20; //очки нам нужны от 100 до 300
@@ -178,20 +177,19 @@ public class opi {
                 System.out.print("Введите букву: ");
                 letter=readLetter(); //ввод буквы
                 if (CountLetter(currWord,letter)>0){
-                    System.out.println("Это буква уже открыта! Вы ошиблись.");
-                    round++; //человек ошибся и назвал букву которая уже открыта (его проблеиы)
+                    System.out.println("Это буква уже открыта! Вы ошиблись."); //человек ошибся и назвал букву которая уже открыта (его проблемы)
                     continue;
                 }
                 tempScore*=CountLetter(fullWord,letter); //на количество открытых букв умножаем выбитое количество очков на барабане
-                if (tempScore==0){ //если баквы нет то и счётчик вернет 0, после умножения на 0 tempScore будет 0
+                if (tempScore==0){ //если буквы нет, то и счётчик вернет 0, после умножения на 0 tempScore будет 0
                     System.out.println("Такой буквы нет");
-                    round++;
                 } else {
                     System.out.println("Есть такая буква");
                     playerScore[round-1]+=tempScore; //прибавляем к счету игрока
                     currWord = openLettersInWord(fullWord,currWord,letter);
+                    round--;
                 }
-            }
+            }while (round<3 && CountLetter(currWord,'_')>0);
         }
         System.out.print("Выиграл ");
         System.out.print(round);
