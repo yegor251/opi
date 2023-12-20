@@ -137,7 +137,7 @@ public class opi {
             playerScore[i]=0;
         }
         path="q.txt";//тут нужно указывать путь к файлу
-        str=ReadFile(path,findRandomLine(50)); //считываем строку из файла 50 это количество строк в базе
+        str=ReadFile(path,findRandomLine(84)); //считываем строку из файла 50 это количество строк в базе
         uslovie=findСondition(str); //считываем условие(вопрос)
         fullWord=findFullWord(str); //считываем слово которое нужно угадать
         for (int i = 0; i < fullWord.length(); i++) {
@@ -169,6 +169,8 @@ public class opi {
                 if (randNum==17){ //аналогично только тут вызывается функция сектор +
                     System.out.println("Сектор плюс");
                     currWord = sectorPlus(currWord,fullWord);
+                    if (CountLetter(currWord,'_')==0)
+                        round--;
                     continue;
                 }
                 tempScore=randNum*20; //очки нам нужны от 100 до 300
@@ -192,9 +194,9 @@ public class opi {
             }while (round<3 && CountLetter(currWord,'_')>0);
         }
         System.out.print("Выиграл ");
-        System.out.print(round);
+        System.out.print(round+1);
         System.out.println("-й Игрок! Ура!");
         System.out.print("Баланс: ");
-        System.out.println(playerScore[round-1]);
+        System.out.println(playerScore[round]);
     }
 }
