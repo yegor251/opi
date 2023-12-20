@@ -193,6 +193,7 @@ public class opi {
                 }
             }while (round<3 && CountLetter(currWord,'_')>0);
         }
+        System.out.println("Слово: "+fullWord);
         System.out.print("Выиграл ");
         System.out.print(round+1);
         System.out.println("-й Игрок! Ура!");
