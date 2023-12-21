@@ -156,7 +156,7 @@ public class opi {
                 System.out.println("-го игрока");
 
                 System.out.print("Баланс игрока: ");
-                System.out.println(playerScore[round]);
+                System.out.println(playerScore[round-1]);
                 System.out.print("\nНА БАРАБАНЕ: ");
                 randNum=findRandom(); //генерация рандомного числа от 5 до 17
                 if (randNum==16){ // сгенерировало 16 - переход хода
