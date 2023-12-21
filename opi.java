@@ -121,7 +121,7 @@ public class opi {
                 System.out.println("Нужно вводить букву! Попробуйте снова!");
                 isInCorrect=true;
             }
-            if (!(LETTERS.contains(str.toUpperCase().charAt(0))) && !(isInCorrect)) {
+            if (!(isInCorrect) &&!(LETTERS.contains(str.toUpperCase().charAt(0)))) {
                 System.out.println("Это не русская буква! Попробуйте снова!");
                 isInCorrect=true;
             }
