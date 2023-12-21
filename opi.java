@@ -151,16 +151,13 @@ public class opi {
             do{
                 round++;
                 System.out.println(uslovie+' '+currWord);
-                System.out.println("Баланс игроков:");
-                for (int i = 0; i < 3; i++) {
-                    System.out.print(i+1);
-                    System.out.print(" Игрок: ");
-                    System.out.println(playerScore[i]);
-                }
                 System.out.print("Ход ");
                 System.out.print(round);
                 System.out.println("-го игрока");
-                System.out.print("НА БАРАБАНЕ: ");
+
+                System.out.print("Баланс игрока: ");
+                System.out.println(playerScore[round]);
+                System.out.print("\nНА БАРАБАНЕ: ");
                 randNum=findRandom(); //генерация рандомного числа от 5 до 17
                 if (randNum==16){ // сгенерировало 16 - переход хода
                     System.out.println("переход хода");
@@ -169,8 +166,7 @@ public class opi {
                 if (randNum==17){ //аналогично только тут вызывается функция сектор +
                     System.out.println("Сектор плюс");
                     currWord = sectorPlus(currWord,fullWord);
-                    if (CountLetter(currWord,'_')==0)
-                        round--;
+                    round--;
                     continue;
                 }
                 tempScore=randNum*20; //очки нам нужны от 100 до 300
