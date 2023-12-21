@@ -150,14 +150,14 @@ public class opi {
             round=0;
             do{
                 round++;
-                System.out.println(uslovie+' '+currWord);
+
                 System.out.print("Ход ");
                 System.out.print(round);
                 System.out.println("-го игрока");
-
+                System.out.println(uslovie+' '+currWord);
                 System.out.print("Баланс игрока: ");
                 System.out.println(playerScore[round-1]);
-                System.out.print("\nНА БАРАБАНЕ: ");
+                System.out.print("НА БАРАБАНЕ: ");
                 randNum=findRandom(); //генерация рандомного числа от 5 до 17
                 if (randNum==16){ // сгенерировало 16 - переход хода
                     System.out.println("переход хода");
@@ -187,6 +187,7 @@ public class opi {
                     currWord = openLettersInWord(fullWord,currWord,letter);
                     round--;
                 }
+                System.out.println("-----------------------------------------");
             }while (round<3 && CountLetter(currWord,'_')>0);
         }
         System.out.println("Слово: "+fullWord);
